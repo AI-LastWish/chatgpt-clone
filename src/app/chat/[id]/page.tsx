@@ -1,18 +1,18 @@
+"use client"
+
 import Chat from "@/components/Chat"
 import ChatInput from "@/components/ChatInput"
+import { useState } from "react";
 
-type Props = {
-  id: number;
-  question: string;
-}
-
-function ChatPage({ id, question }: Props) {
+function ChatPage() {
+  const [conversations, setConversations] = useState<Conversation[]>([])
+  
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       {/* Chat */}
-      <Chat/>
+      <Chat conversations={conversations}/>
       {/* Chat Input */}
-      <ChatInput/>
+      <ChatInput conversations={conversations} setConversations={setConversations}/> 
     </div>
   )
 }

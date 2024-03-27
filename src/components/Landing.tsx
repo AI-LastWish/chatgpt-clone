@@ -15,9 +15,9 @@ function Landing() {
 
           </div>
 
-          <p className="infoText">"Explain Something to me"</p>
-          <p className="infoText">"What is the difference between a dog and a cat?"</p>
-          <p className="infoText">"What is the color of the sun?"</p>
+          <p className="infoText">&quot;Explain Something to me&quot;</p>
+          <p className="infoText">&quot;What is the difference between a dog and a cat?&quot;</p>
+          <p className="infoText">&quot;What is the color of the sun?&quot;</p>
         </div>
 
         <div>
