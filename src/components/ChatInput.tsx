@@ -1,29 +1,51 @@
 "use client"
 
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
-import { FormEvent, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import axios from "axios";
 
-type Props = {
-  id: number;
+type Conversation = {
   question: string;
+  answer: string;
 }
 
-function ChatInput({ id, question }: Props) {
+type Props = {
+  conversations: Conversation[]
+  setConversations: Dispatch<SetStateAction<Conversation[]>>
+}
+
+function ChatInput({ conversations, setConversations }: Props) {
   const [prompt, setPrompt] = useState("")
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
+    console.log("conversations", conversations)
     e.preventDefault()
 
-    if(!prompt) return
+    if (!prompt) return
 
     const input = prompt.trim()
     setPrompt("")
 
-    const message = {
-      id: 1,
-      question: input,
-      createdAt: new Date().toISOString()
+    const response = await axios.post('/api/answers', {
+      "question": input
+    })
+
+    if (response && response.status === 200) {
+      const newConversation = [...conversations, {
+        question: input,
+        answer: response.data.answer
+      }]
+      console.log("newConversation", newConversation)
+      setConversations(newConversation)
+    } else {
+      const newConversation = [...conversations, {
+        question: input,
+        answer: "Something went wrong"
+      }]
+      setConversations(newConversation)
     }
+
+    console.log("response", response)
   }
 
   return (
@@ -45,10 +67,6 @@ function ChatInput({ id, question }: Props) {
           <ArrowUpCircleIcon className="h-4 w-4" />
         </button>
       </form>
-
-      <div>
-        {/* ModelSelection */}
-      </div>
     </div>
   )
 }

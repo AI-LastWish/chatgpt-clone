@@ -1,5 +1,4 @@
-interface Message {
-  id: number;
+type Conversation = {
   question: string;
-  createdAt: string;
+  answer: string;
 }

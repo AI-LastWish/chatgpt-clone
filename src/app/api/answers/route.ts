@@ -4,7 +4,7 @@ export async function POST(request: Request) {
   const { question } = await request.json()
 
   if (!question) {
-    return new Response(JSON.stringify({answer: "Please provide a question!"}), {
+    return new Response(JSON.stringify({ answer: "Please provide a question!" }), {
       headers: {
         "Content-Type": "application/json"
       },
@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
   const answer = generateAnswer(question)
 
-  return new Response(JSON.stringify(answer), {
+  return new Response(JSON.stringify({ answer }), {
     headers: {
       "Content-Type": "application/json"
     },
