@@ -15,9 +15,9 @@ export default function Home() {
 
           </div>
 
-          <p className="infoText">Explain Something to me</p>
-          <p className="infoText">What is the difference between a dog and a cat?</p>
-          <p className="infoText">What is the color of the sun?</p>
+          <p className="infoText">"Explain Something to me"</p>
+          <p className="infoText">"What is the difference between a dog and a cat?"</p>
+          <p className="infoText">"What is the color of the sun?"</p>
         </div>
 
         <div>
